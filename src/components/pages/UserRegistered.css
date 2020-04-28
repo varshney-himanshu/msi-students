@@ -1,0 +1,60 @@
+.user-registered .container {
+  overflow: scroll;
+  margin-top: 5rem;
+}
+
+.user-registered table {
+  width: 100%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.247);
+  overflow: scroll !important;
+}
+
+.user-registered table td {
+  text-align: left;
+  padding: 0.3rem 1rem;
+}
+
+td {
+  border: 1px solid darkgray;
+  background: rgb(247, 247, 247);
+}
+
+th {
+  background: darkslategray;
+  letter-spacing: 1px;
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem 0.5rem;
+}
+
+.export-as-csv {
+  border: 1px solid darkslategray;
+  padding: 0.2rem 1rem;
+  margin-top: 2rem;
+  display: block;
+  text-align: left;
+  margin-left: 7rem;
+  background: none;
+  border-radius: 4px;
+  transition: all 0.2s;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.247);
+}
+
+.export-as-csv:active {
+  box-shadow: none;
+}
+
+.export-as-csv:focus {
+  outline: none;
+}
+
+.export-as-csv:hover {
+  background: darkslategray;
+  color: white;
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    overflow-x: scroll;
+  }
+}

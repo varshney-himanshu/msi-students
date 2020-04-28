@@ -1,0 +1,92 @@
+.users__card {
+  display: flex;
+  margin: 1rem;
+  background: white;
+  color: black;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.users__card div {
+  text-align: left;
+}
+
+.users__card div:not(:last-child) {
+  border-right: 1px solid lightgray;
+}
+
+.users__card .key {
+  color: darkslategray;
+  font-weight: 600;
+}
+
+.users__card .card_btns {
+  position: relative;
+}
+.users__card .card_btns button {
+  margin-right: 0.4rem;
+}
+
+.users__card .button-dark-outline {
+  margin-right: 0.5rem !important;
+}
+
+.users__card form {
+  padding: 1rem;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  left: -19rem;
+  top: 0;
+  width: 20rem;
+  box-shadow: 0 0 10px black;
+  z-index: 100;
+  display: none;
+}
+
+.users__card-show-form {
+  display: block !important;
+}
+
+.users__card form select {
+  padding: 0.5rem;
+  margin-bottom: 0.4rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.users__card form input {
+  padding: 0.5rem;
+  margin-bottom: 0.4rem;
+  width: 100%;
+  font-size: 1.6rem;
+}
+
+.users__card form button {
+  width: 100%;
+}
+
+.form-close {
+  position: absolute;
+  right: 0.2rem;
+  font-weight: bold;
+  color: red;
+  top: 2px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 2rem !important;
+}
+
+.form-close:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .users__card form {
+    top: -6.5rem;
+    left: 14rem;
+  }
+}

@@ -1,0 +1,151 @@
+.create-profile {
+  position: absolute;
+  width: 50vh;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.create-profile p {
+  color: darkgray;
+}
+
+.create-profile button {
+  background: darkslategray;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.profile {
+  width: 100%;
+}
+
+.profile .header {
+  padding-top: 5rem;
+  width: 50%;
+  margin: auto;
+}
+
+.profile .header .profile-picture {
+  width: 10rem;
+  height: 10rem;
+  background: url("../../profile-pic-placeholder.jpg");
+  background-size: cover;
+  border-radius: 100%;
+  margin: auto;
+}
+
+.profile .header .username {
+  font-weight: bold;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  text-align: center;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+}
+
+span.role {
+  font-size: 1rem;
+  color: darkgoldenrod;
+}
+
+.profile .body {
+  padding: 0.5rem 1rem;
+  width: 30rem;
+  margin: auto;
+  text-align: left;
+  border-top: 1px solid lightgray;
+}
+
+.profile .body .field {
+  color: darkslategray;
+  font-weight: 300;
+}
+
+.profile .body .value {
+  font-weight: 600;
+  text-align: right;
+}
+
+.edit-profile button {
+  background: none;
+  border: none;
+}
+
+.edit-profile button:hover {
+  background: darkslategray;
+  color: white;
+  border-radius: 5px;
+}
+
+.profile-events {
+  text-align: center;
+  margin-top: 4rem;
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.profile-events h2 {
+  color: darkslategray;
+  font-weight: 700;
+  text-decoration: un;
+  letter-spacing: 1px;
+  padding-top: 1rem;
+  border-top: 1px solid lightgray;
+}
+
+.profile-events-table {
+  overflow-x: scroll;
+  margin: auto;
+  max-height: 50vh;
+  padding: 2rem 0;
+  border-radius: 5px;
+  background-color: darkslategray;
+}
+
+.profile-events-table .profile-event {
+  background-color: white;
+  width: 95%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  border-radius: 5px;
+  display: flex;
+  margin: auto;
+  margin-bottom: 0.7rem;
+  border: 1px solid lightgray;
+  padding: 3px;
+}
+
+.profile-events-table .profile-event .col {
+  border-right: 1px solid lightgray;
+}
+
+.profile-events-table .profile-event button {
+  border: none;
+  background: darkslategray;
+  padding: 0.5rem 1rem;
+  color: white;
+  height: fit-content;
+  border-radius: 5px;
+}
+
+.profile-event span {
+  color: darkslategray;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 500px) {
+  .profile-events-table .profile-event .col {
+    border-right: none;
+    margin: auto;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid lightgray;
+  }
+  .profile-events-table .profile-event div {
+    margin: 0.5rem 1rem;
+    width: 30%;
+  }
+}
