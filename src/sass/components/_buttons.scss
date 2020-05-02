@@ -1,0 +1,94 @@
+.button-primary {
+    padding: 8px 15px;
+    font-weight: bold;
+    border: none;
+    background-color: $color-primary-0;
+    color: $color-primary-1;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    box-shadow: -1px 2.5px 5px rgba(0, 0, 0, .5);
+    outline: none;
+    text-transform: uppercase;
+    transition: 0.1s;
+    border-bottom: 4px solid darken($color-primary-0, 8%);
+    border-left: 3px solid darken($color-primary-0, 8%);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        box-shadow: 0 0px 5px rgba(0, 0, 0, .5);
+        border-bottom: 2px solid darken($color-primary-0, 10%);
+        border-left: 1.5px solid darken($color-primary-0, 10%);
+        margin-bottom: -1px;
+        margin-right: 1px;
+        transform: translateY(1px);
+    }
+}
+
+.button-secondary {
+    padding: 8px 15px;
+    font-weight: bold;
+    border: none;
+    background-color: $color-primary-1;
+    color: $color-primary-0;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: -1px 2.5px 5px rgba(0, 0, 0, .2);
+    outline: none;
+    transition: 0.1s;
+    border-bottom: 4px solid darken($color-primary-1, 20%);
+    border-left: 3px solid darken($color-primary-1, 20%);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        box-shadow: 0 0px 5px rgba(0, 0, 0, .2);
+        border-bottom: 2px solid darken($color-primary-1, 30%);
+        border-left: 1.5px solid darken($color-primary-1, 30%);
+        margin-bottom: -1px;
+        margin-right: 2px;
+        transform: translateY(1px);
+    }
+}
+
+.button-tertiary {
+    padding: 8px 15px;
+    font-weight: bold;
+    border: none;
+    background-color: $color-tertiary;
+    color: white;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: -1px 2.5px 5px rgba(0, 0, 0, .2);
+    outline: none;
+    transition: 0.1s;
+    border-bottom: 4px solid darken($color-tertiary, 10%);
+    border-left: 3px solid darken($color-tertiary, 10%);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        box-shadow: 0 0px 5px rgba(0, 0, 0, .2);
+        border-bottom: 2px solid darken($color-tertiary, 10%);
+        border-left: 1.5px solid darken($color-tertiary, 10%);
+        margin-bottom: -1px;
+        margin-right: 1px;
+        transform: translateY(1px);
+    }
+}

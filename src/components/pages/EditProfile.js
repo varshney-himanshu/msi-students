@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import Axios from "axios";
 import Loader from "../layout/Loader";
 import api from "../../config/keys";
+import Layout from "../layout/Layout";
 
 class EditProfile extends Component {
   constructor(props) {
@@ -141,102 +142,105 @@ class EditProfile extends Component {
       return <Loader />;
     } else
       return (
-        <div className="form">
-          <form onSubmit={this.onSubmit}>
-            <h4 className="heading">Edit Profile</h4>
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              placeholder="Full Name"
-              onChange={this.onChange}
-              required
-            />
-            <br />
-            <input
-              type="text"
-              name="enrollment_id"
-              value={this.state.enrollment_id}
-              placeholder="Enrollment ID"
-              onChange={this.onChange}
-              required
-            />
-            {this.state.errors.enrollment_id && this.state.errors.enrollment_id}
-            <br />
-            <input
-              type="text"
-              name="phone"
-              value={this.state.phone}
-              placeholder="Phone Number"
-              onChange={this.onChange}
-              required
-            />
-            {this.state.errors.phone && this.state.errors.phone}
-            <br />
-            <select name="department" onChange={this.onChange} required>
-              <option value="" disabled>
-                Select Department
-              </option>
-
-              {departments.map((department) => (
-                <option
-                  selected={
-                    JSON.parse(this.state.department).department_name ===
-                    department.department_name
-                  }
-                  value={JSON.stringify(department)}
-                >
-                  {department.title}
+        <Layout>
+          <div className="form">
+            <form onSubmit={this.onSubmit}>
+              <h4 className="heading">Edit Profile</h4>
+              <input
+                type="text"
+                name="name"
+                value={this.state.name}
+                placeholder="Full Name"
+                onChange={this.onChange}
+                required
+              />
+              <br />
+              <input
+                type="text"
+                name="enrollment_id"
+                value={this.state.enrollment_id}
+                placeholder="Enrollment ID"
+                onChange={this.onChange}
+                required
+              />
+              {this.state.errors.enrollment_id &&
+                this.state.errors.enrollment_id}
+              <br />
+              <input
+                type="text"
+                name="phone"
+                value={this.state.phone}
+                placeholder="Phone Number"
+                onChange={this.onChange}
+                required
+              />
+              {this.state.errors.phone && this.state.errors.phone}
+              <br />
+              <select name="department" onChange={this.onChange} required>
+                <option value="" disabled>
+                  Select Department
                 </option>
-              ))}
-            </select>
-            <br />
 
-            <select name="semester" onChange={this.onChange} required>
-              <option value="" disabled>
-                Select Semester
-              </option>
-              {this.state.semesters.map((semester) => (
-                <option
-                  selected={
-                    JSON.parse(this.state.semester).semster_id ===
-                    semester.semester_id
-                  }
-                  value={JSON.stringify(semester)}
-                >
-                  {semester.title}
+                {departments.map((department) => (
+                  <option
+                    selected={
+                      JSON.parse(this.state.department).department_name ===
+                      department.department_name
+                    }
+                    value={JSON.stringify(department)}
+                  >
+                    {department.title}
+                  </option>
+                ))}
+              </select>
+              <br />
+
+              <select name="semester" onChange={this.onChange} required>
+                <option value="" disabled>
+                  Select Semester
                 </option>
-              ))}
-            </select>
+                {this.state.semesters.map((semester) => (
+                  <option
+                    selected={
+                      JSON.parse(this.state.semester).semster_id ===
+                      semester.semester_id
+                    }
+                    value={JSON.stringify(semester)}
+                  >
+                    {semester.title}
+                  </option>
+                ))}
+              </select>
 
-            <br />
-            <input
-              type="text"
-              name="section"
-              value={this.state.section}
-              placeholder="Section"
-              onChange={this.onChange}
-              required
-            />
-            <br />
+              <br />
+              <input
+                type="text"
+                name="section"
+                value={this.state.section}
+                placeholder="Section"
+                onChange={this.onChange}
+                required
+              />
+              <br />
 
-            <select name="institute" onChange={this.onChange} required>
-              <option value="" disabled>
-                Select Institute
-              </option>
-              <option
-                value="Maharaja Surajmal Institute"
-                selected={
-                  this.state.institute === "Maharaja Surajmal Insititute"
-                }
-              >
-                Maharaja Surajmal Institute
-              </option>
-            </select>
-            <br></br>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
+              <select name="institute" onChange={this.onChange} required>
+                <option value="" disabled>
+                  Select Institute
+                </option>
+                <option
+                  value="Maharaja Surajmal Institute"
+                  selected={
+                    this.state.institute === "Maharaja Surajmal Insititute"
+                  }
+                >
+                  Maharaja Surajmal Institute
+                </option>
+              </select>
+              <br></br>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </Layout>
       );
   }
 }

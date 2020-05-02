@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "./Homepage.css";
+// import "./Homepage.css";
 import { connect } from "react-redux";
 import Slider from "../layout/Slider";
 import Notice from "../layout/Notice";
-import EventCard from "./EventCard";
+import EventCard from "./EventCard/EventCard";
+import Layout from "../layout/Layout";
 
 class Homepage extends Component {
   constructor(props) {
@@ -29,22 +30,24 @@ class Homepage extends Component {
     const { homeimages, notice, events } = this.state;
     // console.log(homeimages);
     return (
-      <div className="homepage">
-        <div className="row homepage-content">
-          <div className="col-md-9 main-container">
-            <Slider imageFiles={homeimages} />
+      <Layout>
+        <div className="homepage">
+          <div className="row homepage-content">
+            <div className="col-md-9 main-container">
+              <Slider imageFiles={homeimages} />
+            </div>
 
-            <div className="latest-event">
-              <h5>Latest Event</h5>
-              <EventCard event={events[0]} />
+            <div className="col-md-3 side-container">
+              <Notice text={notice.text} />
+              <hr />
+              <div className="latest-event">
+                <small>Latest Event</small>
+                <EventCard event={events[0]} />
+              </div>
             </div>
           </div>
-
-          <div className="col-md-3 side-container">
-            <Notice text={notice.text} />
-          </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }

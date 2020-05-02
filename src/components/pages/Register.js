@@ -4,6 +4,7 @@ import { registerUser } from "../../actions/authActions";
 import { withRouter } from "react-router";
 import logo from "../../logo.png";
 import roles from "../../config/Roles";
+import Layout from "../layout/Layout";
 
 class Register extends Component {
   constructor() {
@@ -61,67 +62,69 @@ class Register extends Component {
   render() {
     const { departments } = this.state;
     return (
-      <div className="register-page">
-        <div className="form">
-          <br />
-          <form onSubmit={this.onSubmit}>
-            <img
-              className="login-logo"
-              rel="preload"
-              src={logo}
-              alt="MSI Logo"
-            />
-            <h4 className="heading">MSI Events - Register</h4>
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              placeholder="Username"
-              onChange={this.onChange}
-            />
-            {this.state.errors.name && this.state.errors.name}
-            <input
-              type="email"
-              name="email"
-              value={this.state.email}
-              placeholder="Email Address"
-              onChange={this.onChange}
-            />
-            {this.state.errors.email && this.state.errors.email}
+      <Layout>
+        <div className="register-page">
+          <div className="form">
             <br />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              onChange={this.onChange}
-            />
-            {this.state.errors.password && this.state.errors.password}
-            <br />
-            <input
-              type="password"
-              name="password2"
-              placeholder="Confim Password"
-              onChange={this.onChange}
-            />
-            {this.state.errors.password2 && this.state.errors.password2}
-            <br />
-            <select name="department" onChange={this.onChange} required>
-              <option value="" disabled selected>
-                Select Department
-              </option>
-
-              {departments.map((department) => (
-                <option value={JSON.stringify(department)}>
-                  {department.title}
+            <form onSubmit={this.onSubmit}>
+              <img
+                className="login-logo"
+                rel="preload"
+                src={logo}
+                alt="MSI Logo"
+              />
+              <h4 className="heading">MSI Events - Register</h4>
+              <input
+                type="text"
+                name="name"
+                value={this.state.name}
+                placeholder="Username"
+                onChange={this.onChange}
+              />
+              {this.state.errors.name && this.state.errors.name}
+              <input
+                type="email"
+                name="email"
+                value={this.state.email}
+                placeholder="Email Address"
+                onChange={this.onChange}
+              />
+              {this.state.errors.email && this.state.errors.email}
+              <br />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={this.onChange}
+              />
+              {this.state.errors.password && this.state.errors.password}
+              <br />
+              <input
+                type="password"
+                name="password2"
+                placeholder="Confim Password"
+                onChange={this.onChange}
+              />
+              {this.state.errors.password2 && this.state.errors.password2}
+              <br />
+              <select name="department" onChange={this.onChange} required>
+                <option value="" disabled selected>
+                  Select Department
                 </option>
-              ))}
-            </select>
-            <button type="submit" value="Register">
-              Register
-            </button>
-          </form>
+
+                {departments.map((department) => (
+                  <option value={JSON.stringify(department)}>
+                    {department.title}
+                  </option>
+                ))}
+              </select>
+              <button type="submit" value="Register">
+                Register
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../actions/authActions";
 import { connect } from "react-redux";
-import "./Navbar.css";
+// import "./Navbar.css";
 import HamburgerIcon from "./HamburgerIcon";
 import roles from "../../config/Roles";
 
@@ -32,12 +32,12 @@ class Navbar extends Component {
     <>
       <li className="nav-item">
         <Link to="/login" className="nav-link">
-          <button className="button-dark">Login</button>
+          <button className="button-primary">Login</button>
         </Link>
       </li>
       <li className="nav-item">
         <Link to="/register" className="nav-link">
-          <button className="button-dark">Register</button>
+          <button className="button-secondary">Register</button>
         </Link>
       </li>
     </>
@@ -48,7 +48,7 @@ class Navbar extends Component {
       <div className="btn-group dropleft">
         <button
           type="button"
-          className="btn btn-secondary dropdown-toggle button-dark"
+          className="dropdown-toggle button-primary"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
@@ -104,14 +104,14 @@ class Navbar extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item active">
-                <Link className="nav-link" to="/">
-                  Home <span className="sr-only">(current)</span>
-                </Link>
-              </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/events">
                   Events
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/notes">
+                  Notes
                 </Link>
               </li>
               <li className="nav-item">

@@ -3,7 +3,7 @@ import { getAllUsers } from "../../actions/dataActions";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import UserCard from "./UserCard";
-import "./Users.css";
+// import "./Users.css";
 import roles from "../../config/Roles";
 
 class Users extends Component {

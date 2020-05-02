@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import "./Notice.css";
+// import "./Notice.css";
 
 class Notice extends Component {
   static defaultProps = {
-    text: "There is currently no notice!"
+    text: "There is currently no notice!",
   };
 
   render() {
     return (
       <div className="notice">
-        <h4>Notice</h4>
-        <p>{this.props.text}</p>
+        <div className="notice__header">NOTICE</div>
+        <p className="notice__text">{this.props.text}</p>
       </div>
     );
   }

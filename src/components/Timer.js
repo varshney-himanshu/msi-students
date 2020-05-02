@@ -1,11 +1,11 @@
 import React from "react";
-import "./Timer.css";
+import Loader from "../assets/Rolling-1s-200px (1).gif";
 
 const initialState = {
   days: 0,
   hours: 0,
   minutes: 0,
-  seconds: 0
+  seconds: 0,
 };
 
 class Timer extends React.Component {
@@ -15,7 +15,7 @@ class Timer extends React.Component {
   }
 
   static defaultProps = {
-    endDeadline: () => {}
+    endDeadline: () => {},
   };
 
   componentDidMount() {
@@ -31,9 +31,9 @@ class Timer extends React.Component {
 
         this.setState({ days, hours, minutes, seconds });
         if (rt <= 0) {
+          this.props.endDeadline();
           this.setState({ initialState });
           clearInterval(this.interval);
-          this.props.endDeadline();
         }
       }, 1000);
     }
@@ -41,30 +41,50 @@ class Timer extends React.Component {
 
   render() {
     const { days, hours, minutes, seconds } = this.state;
-    return (
-      <div className="timer">
-        <span>
-          {days < 10 && "0"}
-          {days}
-          <small className="time-info">D</small>
-        </span>{" "}
-        <span>
-          {hours < 10 && "0"}
-          {hours}
-          <small className="time-info">H</small>
-        </span>{" "}
-        <span>
-          {minutes < 10 && "0"}
-          {minutes}
-          <small className="time-info">M</small>
-        </span>{" "}
-        <span>
-          {seconds < 10 && "0"}
-          {seconds}
-          <small className="time-info">S</small>
-        </span>
-      </div>
-    );
+
+    if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+      return (
+        <div className="timer">
+          <span>
+            <img src={Loader}></img>
+          </span>{" "}
+          <span>
+            <img src={Loader}></img>
+          </span>{" "}
+          <span>
+            <img src={Loader}></img>
+          </span>{" "}
+          <span>
+            <img src={Loader}></img>
+          </span>
+        </div>
+      );
+    } else {
+      return (
+        <div className="timer">
+          <span>
+            {days < 10 && "0"}
+            {days}
+            <small className="time-info">D</small>
+          </span>{" "}
+          <span>
+            {hours < 10 && "0"}
+            {hours}
+            <small className="time-info">H</small>
+          </span>{" "}
+          <span>
+            {minutes < 10 && "0"}
+            {minutes}
+            <small className="time-info">M</small>
+          </span>{" "}
+          <span>
+            {seconds < 10 && "0"}
+            {seconds}
+            <small className="time-info">S</small>
+          </span>
+        </div>
+      );
+    }
   }
 }
 

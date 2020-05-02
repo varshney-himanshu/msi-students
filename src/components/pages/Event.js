@@ -4,10 +4,11 @@ import { extractDateString } from "../../utils/utils";
 import Timer from "../Timer";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import "./Event.css";
+// import "./Event.css";
 import Loader from "../layout/Loader";
 import api from "../../config/keys";
 import roles from "../../config/Roles";
+import Layout from "../layout/Layout";
 
 class Event extends Component {
   constructor(props) {
@@ -236,113 +237,120 @@ class Event extends Component {
       return <Loader />;
     } else {
       return (
-        <div className="container">
-          {event.type === "MULTIPLE" && (
-            <form
-              id={`team-${event._id.toString()}`}
-              className="team-register"
-              onSubmit={this.onClickRegisterMultiple}
-            >
-              <button
-                type="button"
-                className="btn-close"
-                onClick={this.CloseMultiForm}
+        <Layout>
+          <div className="container">
+            {event.type === "MULTIPLE" && (
+              <form
+                id={`team-${event._id.toString()}`}
+                className="team-register"
+                onSubmit={this.onClickRegisterMultiple}
               >
-                x
-              </button>
-
-              <h2 className="heading">
-                Submit Team ({`${event.members} Members`})
-              </h2>
-              <div>
-                <strong>Leader: </strong>
-                {auth.user.email}
-              </div>
-              {[...Array(event.members - 1)].map((e, i) => (
-                <>
-                  <input
-                    type="email"
-                    name={`member${i + 2}`}
-                    placeholder={`Email of team member ${i + 2}`}
-                    onChange={this.onChange}
-                    required
-                  />
-                </>
-              ))}
-              <input
-                type="text"
-                name="teamName"
-                placeholder="Team Name"
-                onChange={this.onChange}
-                value={this.state.teamName}
-              ></input>
-              <button>Submit</button>
-            </form>
-          )}
-
-          <div className="event">
-            <h1>{event.title}</h1>
-            <h5>{event.type === "MULTIPLE" ? "Team Event" : "Single Event"}</h5>
-            <div className="event-image">
-              <img src={event.image.image_url} />
-            </div>
-            <p className="event-date">
-              <strong>Date: </strong> {extractDateString(event.date)}
-            </p>
-            <p>{event.description}</p>
-
-            <div className="event-deadline">
-              <strong>Registration Deadline:</strong>
-              <span className="deadline">
-                {extractDateString(event.deadline)}
-              </span>
-              <Timer deadline={event.deadline} endDeadline={this.endDeadline} />
-            </div>
-
-            <div className="footer">
-              <div className="venue">
-                <strong>Venue:</strong> {event.venue}
-              </div>
-
-              {deadlineEnded ? (
-                <div>Registration Closed!</div>
-              ) : (
-                <>
-                  {auth.user.role === roles.student ||
-                  auth.user.role === roles.mod ||
-                  auth.isAuthenticated === false ? (
-                    <>
-                      {isRegistered ? (
-                        <button className="event-register" disabled>
-                          Registered
-                        </button>
-                      ) : (
-                        registerButton
-                      )}
-                    </>
-                  ) : null}
-                </>
-              )}
-
-              {auth.isAuthenticated &&
-              (auth.user.role === roles.admin ||
-                auth.user.role === roles.mod) ? (
                 <button
-                  className="event-register"
-                  onClick={() =>
-                    this.props.history.push(
-                      `/event/${this.props.match.params.id}/registered`
-                    )
-                  }
+                  type="button"
+                  className="btn-close"
+                  onClick={this.CloseMultiForm}
                 >
-                  Users Registered
+                  x
                 </button>
-              ) : (
-                <></>
-              )}
+
+                <h2 className="heading">
+                  Submit Team ({`${event.members} Members`})
+                </h2>
+                <div>
+                  <strong>Leader: </strong>
+                  {auth.user.email}
+                </div>
+                {[...Array(event.members - 1)].map((e, i) => (
+                  <>
+                    <input
+                      type="email"
+                      name={`member${i + 2}`}
+                      placeholder={`Email of team member ${i + 2}`}
+                      onChange={this.onChange}
+                      required
+                    />
+                  </>
+                ))}
+                <input
+                  type="text"
+                  name="teamName"
+                  placeholder="Team Name"
+                  onChange={this.onChange}
+                  value={this.state.teamName}
+                ></input>
+                <button>Submit</button>
+              </form>
+            )}
+
+            <div className="event">
+              <h1>{event.title}</h1>
+              <h5>
+                {event.type === "MULTIPLE" ? "Team Event" : "Single Event"}
+              </h5>
+              <div className="event-image">
+                <img src={event.image.image_url} />
+              </div>
+              <p className="event-date">
+                <strong>Date: </strong> {extractDateString(event.date)}
+              </p>
+              <p>{event.description}</p>
+
+              <div className="event-deadline">
+                <strong>Registration Deadline:</strong>
+                <span className="deadline">
+                  {extractDateString(event.deadline)}
+                </span>
+                <Timer
+                  deadline={event.deadline}
+                  endDeadline={this.endDeadline}
+                />
+              </div>
+
+              <div className="footer">
+                <div className="venue">
+                  <strong>Venue:</strong> {event.venue}
+                </div>
+
+                {deadlineEnded ? (
+                  <div>Registration Closed!</div>
+                ) : (
+                  <>
+                    {auth.user.role === roles.student ||
+                    auth.user.role === roles.mod ||
+                    auth.isAuthenticated === false ? (
+                      <>
+                        {isRegistered ? (
+                          <button className="event-register" disabled>
+                            Registered
+                          </button>
+                        ) : (
+                          registerButton
+                        )}
+                      </>
+                    ) : null}
+                  </>
+                )}
+
+                {auth.isAuthenticated &&
+                (auth.user.role === roles.admin ||
+                  auth.user.role === roles.mod) ? (
+                  <button
+                    className="event-register"
+                    onClick={() =>
+                      this.props.history.push(
+                        `/event/${this.props.match.params.id}/registered`
+                      )
+                    }
+                  >
+                    Users Registered
+                  </button>
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </Layout>
       );
     }
   }

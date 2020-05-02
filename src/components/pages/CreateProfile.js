@@ -5,6 +5,7 @@ import { registerProfile } from "../../actions/dataActions";
 import { withRouter } from "react-router-dom";
 import Axios from "axios";
 import API from "../../config/keys";
+import Layout from "../layout/Layout";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -98,92 +99,94 @@ class CreateProfile extends Component {
   render() {
     const { departments } = this.state;
     return (
-      <div className="form">
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            name="name"
-            value={this.state.name}
-            placeholder="Full Name"
-            onChange={this.onChange}
-            required
-          />
-          <br />
-          <input
-            type="text"
-            name="enrollment_id"
-            value={this.state.enrollment_id}
-            placeholder="Enrollment ID"
-            onChange={this.onChange}
-            required
-          />
-          {this.state.errors.enrollment_id && this.state.errors.enrollment_id}
-          <br />
-          <input
-            type="text"
-            name="phone"
-            value={this.state.phone}
-            placeholder="Phone Number"
-            onChange={this.onChange}
-            required
-          />
-          {this.state.errors.phone && this.state.errors.phone}
-          <br />
-          <select name="department" onChange={this.onChange} required>
-            <option value="" selected disabled>
-              Select Department
-            </option>
-
-            {departments.map((department) => (
-              <option value={JSON.stringify(department)}>
-                {department.title}
+      <Layout>
+        <div className="form">
+          <form onSubmit={this.onSubmit}>
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              placeholder="Full Name"
+              onChange={this.onChange}
+              required
+            />
+            <br />
+            <input
+              type="text"
+              name="enrollment_id"
+              value={this.state.enrollment_id}
+              placeholder="Enrollment ID"
+              onChange={this.onChange}
+              required
+            />
+            {this.state.errors.enrollment_id && this.state.errors.enrollment_id}
+            <br />
+            <input
+              type="text"
+              name="phone"
+              value={this.state.phone}
+              placeholder="Phone Number"
+              onChange={this.onChange}
+              required
+            />
+            {this.state.errors.phone && this.state.errors.phone}
+            <br />
+            <select name="department" onChange={this.onChange} required>
+              <option value="" selected disabled>
+                Select Department
               </option>
-            ))}
-          </select>
 
-          {this.state.isDepartmentSelected && (
-            <>
-              <br />
-              <select name="semester" onChange={this.onChange} required>
-                <option value="" disabled selected>
-                  Select Semester
+              {departments.map((department) => (
+                <option value={JSON.stringify(department)}>
+                  {department.title}
                 </option>
-                {this.state.semesters.map((semester) => (
-                  <option value={JSON.stringify(semester)}>
-                    {semester.title}
-                  </option>
-                ))}
-              </select>
-            </>
-          )}
-          <br />
-          <input
-            type="text"
-            name="section"
-            value={this.state.section}
-            placeholder="Section"
-            onChange={this.onChange}
-            required
-          />
-          <br />
+              ))}
+            </select>
 
-          <select
-            name="institute"
-            onChange={this.onChange}
-            defaultValue=""
-            required
-          >
-            <option value="" disabled>
-              Select Institute
-            </option>
-            <option value="Maharaja Surajmal Institute">
-              Maharaja Surajmal Institute
-            </option>
-          </select>
-          <br></br>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+            {this.state.isDepartmentSelected && (
+              <>
+                <br />
+                <select name="semester" onChange={this.onChange} required>
+                  <option value="" disabled selected>
+                    Select Semester
+                  </option>
+                  {this.state.semesters.map((semester) => (
+                    <option value={JSON.stringify(semester)}>
+                      {semester.title}
+                    </option>
+                  ))}
+                </select>
+              </>
+            )}
+            <br />
+            <input
+              type="text"
+              name="section"
+              value={this.state.section}
+              placeholder="Section"
+              onChange={this.onChange}
+              required
+            />
+            <br />
+
+            <select
+              name="institute"
+              onChange={this.onChange}
+              defaultValue=""
+              required
+            >
+              <option value="" disabled>
+                Select Institute
+              </option>
+              <option value="Maharaja Surajmal Institute">
+                Maharaja Surajmal Institute
+              </option>
+            </select>
+            <br></br>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </Layout>
     );
   }
 }

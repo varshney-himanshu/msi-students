@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { getHomeImages } from "../../actions/dataActions";
 import { connect } from "react-redux";
 import api from "../../config/keys";
+import Layout from "../layout/Layout";
 
 class AddHomeImage extends Component {
   constructor() {
@@ -51,28 +52,30 @@ class AddHomeImage extends Component {
 
   render() {
     return (
-      <div className="form">
-        <form onSubmit={this.onUpload}>
-          <h4 className="heading">Add Home Image</h4>
-          <br />
-          <input
-            type="text"
-            name="id"
-            onChange={this.onChangeInput}
-            placeholder="Event ID"
-          />
-          <br />
-          <input
-            type="text"
-            name="msg"
-            onChange={this.onChangeInput}
-            placeholder="A short message for the event"
-          />
-          <br />
-          <input type="file" name="image" onChange={this.onChangeInput} />
-          <button>Upload</button>
-        </form>
-      </div>
+      <Layout>
+        <div className="form">
+          <form onSubmit={this.onUpload}>
+            <h4 className="heading">Add Home Image</h4>
+            <br />
+            <input
+              type="text"
+              name="id"
+              onChange={this.onChangeInput}
+              placeholder="Event ID"
+            />
+            <br />
+            <input
+              type="text"
+              name="msg"
+              onChange={this.onChangeInput}
+              placeholder="A short message for the event"
+            />
+            <br />
+            <input type="file" name="image" onChange={this.onChangeInput} />
+            <button>Upload</button>
+          </form>
+        </div>
+      </Layout>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import "./Slider.css";
+// import "./Slider.css";
 import { withRouter } from "react-router-dom";
 
 class Slider extends Component {

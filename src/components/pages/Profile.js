@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-import "./Profile.css";
+// import "./Profile.css";
 import Loader from "../layout/Loader";
 import { extractDateString } from "../../utils/utils";
 import API from "../../config/keys";
+import Layout from "../layout/Layout";
 
 class Profile extends Component {
   constructor(props) {
@@ -73,7 +74,7 @@ class Profile extends Component {
     const { loading, user, profile, isEventsLoading, events } = this.state;
 
     return (
-      <div>
+      <Layout>
         <div className="profile" style={{ textAlign: "left" }}>
           {!loading ? (
             !user.isProfileCreated ? (
@@ -191,7 +192,7 @@ class Profile extends Component {
             <Loader />
           )}
         </div>
-      </div>
+      </Layout>
     );
   }
 }

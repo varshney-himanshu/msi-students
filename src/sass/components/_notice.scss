@@ -1,0 +1,29 @@
+.notice {
+
+    background-color: darken($color-primary-1, 7%);
+    box-shadow: 0 0 2px rgba(black, 1);
+
+    height: 150px;
+
+    border-radius: 5px;
+
+    &__header {
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+        padding: 2px 10px;
+        color: $color-primary-1;
+        background-color: $color-primary-0;
+        border-radius: 5px 5px 0 0;
+    }
+
+    &__text {
+        height: 77%;
+        overflow-y: scroll;
+        line-height: 17px;
+        padding: 5px 10px;
+        font-size: .9rem;
+        font-weight: 600;
+    }
+
+}

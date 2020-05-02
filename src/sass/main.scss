@@ -1,0 +1,30 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+// As hex codes */
+
+//  abstracts
+@import "./abstract/functions";
+@import "./abstract/mixins";
+@import "./abstract/variables";
+
+// base
+@import "./base/base";
+@import "./base/animations";
+@import "./base/typography";
+@import "./base/utilities";
+
+//pages
+@import "./pages/events";
+@import "./pages/pages";
+
+//components
+@import "./components/hamburger";
+@import "./components/navbar";
+@import "./components/buttons";
+@import "./components/slider";
+@import "./components/timer";
+@import "./components/eventcard";
+@import "./components/notice";
+@import "./components/scrollbar";
+@import "./components/card";
+@import "./components/pdf-card";

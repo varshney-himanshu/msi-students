@@ -1,0 +1,14 @@
+.navbar {
+    background-color: $color-primary-1;
+    margin-bottom: 1%;
+    padding: 10px 20px;
+    border-bottom: 1px solid darken($color-primary-1, 10%);
+
+    a {
+        color: $color-primary-0;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 1px;
+    }
+}

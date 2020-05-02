@@ -1,0 +1,43 @@
+.carousel {
+    margin: 0rem auto 2em !important;
+    border-radius: 0.4rem;
+    width: 95% !important;
+}
+
+.carousel .slide {
+    background-color: $color-primary-0 !important;
+    border-radius: 0.4rem;
+    // box-shadow: inset 0 0 2300px rgba(black, .4);
+}
+
+.carousel img {
+    height: 77.6vh;
+    width: auto !important;
+    // box-shadow: 0 0 5px rgba(0, 0, 0, 0.637);
+    margin: 0.6rem;
+    border-radius: 0.4rem;
+    border: 5px solid $color-primary-1 !important;
+}
+
+@media only screen and (max-width: 800px) {
+    .carousel img {
+        height: 28vh;
+    }
+}
+
+.carousel .slide:hover {
+    cursor: pointer;
+}
+
+.legend {
+    background: $color-primary-0 !important;
+    color: white !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    left: 0px !important;
+    /* font-weight: bold; */
+    font-size: 2.2rem !important;
+    border-radius: 0 !important;
+}

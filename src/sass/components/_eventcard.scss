@@ -1,0 +1,97 @@
+.event-card {
+    width: 100%;
+    border-radius: 5px;
+    background-color: darken($color-primary-1, 7%);
+    color: $color-primary-1;
+    margin: auto;
+    box-shadow: 0 0 2px rgba(black, .9);
+    margin-bottom: 20px;
+
+    .team-register {
+        display: none;
+    }
+
+    &__header {
+        max-height: 120px;
+        padding: 5px 10px;
+        padding-bottom: 20px;
+        border-radius: 5px 5px 0 0;
+        background-color: $color-primary-0;
+        position: relative;
+
+        &__registration-closed {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            font-size: .9rem;
+            letter-spacing: 1px;
+            text-align: center;
+            background-color: rgb(190, 46, 46);
+        }
+
+        &__registered {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            font-size: .9rem;
+            letter-spacing: 1px;
+            text-align: center;
+            background-color: rgb(102, 192, 43);
+        }
+    }
+
+
+    &__body {
+        padding: 5px 10px;
+        color: $color-primary-0;
+        max-height: 170px;
+
+        hr {
+            margin: 5px;
+        }
+
+        p {
+            font-weight: 500;
+            font-size: .9rem;
+            line-height: 15px;
+            margin-bottom: 5px;
+        }
+
+
+        &__venue {
+            font-size: .9rem;
+            font-weight: 600;
+
+            img {
+                width: 20px;
+                margin-right: 7px;
+            }
+        }
+
+        &__date {
+            img {
+                margin-left: 1px;
+
+                width: 17px;
+                margin-right: 9px;
+            }
+
+            font-weight: 600;
+
+            font-size: .9rem;
+        }
+    }
+
+    &__footer {
+        padding: 0px 0 10px;
+        text-align: center;
+        // background-color: $color-primary-1;
+        border-radius: 0 0 5px 5px;
+    }
+
+    .button-secondary {
+        margin-right: 10px;
+    }
+}

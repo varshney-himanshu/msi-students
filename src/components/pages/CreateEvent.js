@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { registerEvent } from "../../actions/dataActions";
+import Layout from "../layout/Layout";
 
 class CreateEvent extends Component {
   constructor(props) {
@@ -86,92 +87,94 @@ class CreateEvent extends Component {
   render() {
     const { dateNow, type } = this.state;
     return (
-      <div className="form">
-        <form onSubmit={this.onSubmit}>
-          <h4 className="heading">Add Event</h4>
-          <input
-            type="text"
-            name="title"
-            placeholder="Event Title"
-            value={this.state.title}
-            onChange={this.onChange}
-          />
-          <textarea
-            name="description"
-            placeholder="Description"
-            value={this.state.description}
-            onChange={this.onChange}
-          />
-          <input
-            type="text"
-            name="venue"
-            placeholder="Venue"
-            value={this.state.venue}
-            onChange={this.onChange}
-          />
-          <label>Date </label>
-          <input
-            type="date"
-            name="date"
-            value={this.state.date}
-            onChange={this.onChange}
-            min={dateNow}
-          />
-          <label>Type Of Event</label>
-          <div className="form__radio">
+      <Layout>
+        <div className="form">
+          <form onSubmit={this.onSubmit}>
+            <h4 className="heading">Add Event</h4>
             <input
-              className="radio"
-              type="radio"
-              name="type"
-              value="SINGLE"
+              type="text"
+              name="title"
+              placeholder="Event Title"
+              value={this.state.title}
               onChange={this.onChange}
-              required
-            />{" "}
-            <span>Single</span>
+            />
+            <textarea
+              name="description"
+              placeholder="Description"
+              value={this.state.description}
+              onChange={this.onChange}
+            />
             <input
-              className="radio"
-              type="radio"
-              name="type"
-              value="MULTIPLE"
+              type="text"
+              name="venue"
+              placeholder="Venue"
+              value={this.state.venue}
               onChange={this.onChange}
-              required
-            />{" "}
-            <span>Team</span>
-          </div>
-          {type === "MULTIPLE" ? (
-            <>
-              <label>Number Of Members In A Team: </label>
+            />
+            <label>Date </label>
+            <input
+              type="date"
+              name="date"
+              value={this.state.date}
+              onChange={this.onChange}
+              min={dateNow}
+            />
+            <label>Type Of Event</label>
+            <div className="form__radio">
               <input
-                placeholder="Min: 2, Max: 5"
-                name="members"
-                type="number"
-                min={2}
-                max={5}
+                className="radio"
+                type="radio"
+                name="type"
+                value="SINGLE"
                 onChange={this.onChange}
                 required
-              />
-            </>
-          ) : (
-            <></>
-          )}
-          <label>Deadline </label>
-          <input
-            type="date"
-            name="deadline"
-            value={this.state.deadline}
-            onChange={this.onChange}
-            min={dateNow}
-          />
-          <input
-            onChange={this.onChange}
-            type="file"
-            name="img"
-            placeholder="upload image for the event"
-            required
-          />
-          <button>Submit</button>
-        </form>
-      </div>
+              />{" "}
+              <span>Single</span>
+              <input
+                className="radio"
+                type="radio"
+                name="type"
+                value="MULTIPLE"
+                onChange={this.onChange}
+                required
+              />{" "}
+              <span>Team</span>
+            </div>
+            {type === "MULTIPLE" ? (
+              <>
+                <label>Number Of Members In A Team: </label>
+                <input
+                  placeholder="Min: 2, Max: 5"
+                  name="members"
+                  type="number"
+                  min={2}
+                  max={5}
+                  onChange={this.onChange}
+                  required
+                />
+              </>
+            ) : (
+              <></>
+            )}
+            <label>Deadline </label>
+            <input
+              type="date"
+              name="deadline"
+              value={this.state.deadline}
+              onChange={this.onChange}
+              min={dateNow}
+            />
+            <input
+              onChange={this.onChange}
+              type="file"
+              name="img"
+              placeholder="upload image for the event"
+              required
+            />
+            <button>Submit</button>
+          </form>
+        </div>
+      </Layout>
     );
   }
 }

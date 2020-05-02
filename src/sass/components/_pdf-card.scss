@@ -1,0 +1,93 @@
+.pdf-card {
+    perspective: 1200px;
+    -moz-perspective: 1500;
+    position: relative;
+    width: 150px;
+    height: 100px;
+
+
+    &__side {
+        padding: 5px;
+        width: 150px;
+        height: 100px;
+        border-radius: 5px;
+        color: white;
+        transition: all .5s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-shadow: 0 0 2px rgba(black, .9);
+        backface-visibility: hidden;
+
+        &--front {
+            background-color: #B31D23;
+
+            h1 {
+                margin: 0;
+                padding: 0;
+                font-size: 1.6rem;
+                border-bottom: 1px solid darken(#B31D23, 5%);
+            }
+
+
+        }
+
+        &--back {
+            background-color: #B31D23;
+            transform: rotateY(180deg);
+
+            &__button {
+                position: absolute;
+                left: 50%;
+                outline: none;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border: none;
+                background: #B31D23;
+                color: white;
+                padding: 10px 10px;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                border-radius: 5px;
+                transition: .3s;
+
+                &:hover {
+                    cursor: pointer;
+                    background: darken(#B31D23, 10%);
+                }
+
+                &:focus,
+                &:active {
+                    outline: none;
+                }
+
+            }
+        }
+
+
+
+    }
+
+
+    &:hover &__side--front {
+        transform: rotateY(180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0deg);
+    }
+
+    &__title {
+        font-weight: 600;
+        text-transform: uppercase;
+        line-height: 10px;
+    }
+
+    &__author {
+        position: absolute;
+        left: 5px;
+        bottom: 4px;
+    }
+
+}

@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
-import "./App.css";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
+import $ from "jquery";
+
+import "bootstrap";
+import "./sass/main.scss";
 import store from "./store";
 import Homepage from "./components/pages/Homepage";
 import setAuthToken from "./utils/setAuthToken";
@@ -32,11 +37,18 @@ import AddNotice from "./components/pages/AddNotice";
 import EditEvent from "./components/pages/EditEvent";
 import AddHomeImage from "./components/pages/AddHomeImage";
 
-import "./components/pages/Form.css";
+// import "./components/pages/Form.css";
 import EditProfile from "./components/pages/EditProfile";
 import Users from "./components/pages/Users";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
+
+import Notes from "./components/pages/Notes/Notes";
+import Department from "./components/pages/Notes/Department";
+import Semester from "./components/pages/Notes/Semester";
+import Subject from "./components/pages/Notes/Subject";
+
+window.$ = $;
 
 store.dispatch(getHomeImages());
 store.dispatch(getAllEvents());
@@ -65,7 +77,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      loading: true,
+      loading: false,
     };
   }
 
@@ -93,18 +105,26 @@ class App extends Component {
           <div className="App">
             <Router>
               <Navbar />
-              <Route exact path="/" component={Homepage} />
-              <Route exact path="/events" component={Events} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/user/profile" component={Profile} />
-              <Route exact path="/user/profile/edit" component={EditProfile} />
-              <Route
-                exact
-                path="/user/profile/create"
-                component={CreateProfile}
-              />
               <Switch>
+                <Route exact path="/" component={Homepage} />
+                <Route exact path="/events" component={Events} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/contact" component={Contact} />
+
+                <Route exact path="/user/profile" component={Profile} />
+                <Route
+                  exact
+                  path="/user/profile/edit"
+                  component={EditProfile}
+                />
+                <Route
+                  exact
+                  path="/user/profile/create"
+                  component={CreateProfile}
+                />
+
                 <Route exact path="/event/create" component={CreateEvent} />
                 <Route exact path="/event/edit/:id" component={EditEvent} />
 
@@ -114,20 +134,30 @@ class App extends Component {
                   path="/event/:id/registered"
                   component={UserRegistered}
                 />
+
+                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/dashboard/users" component={Users} />
+                <Route
+                  exact
+                  path="/dashboard/home/image/add"
+                  component={AddHomeImage}
+                />
+
+                <Route exact path="/notice/add" component={AddNotice} />
+
+                <Route exact path="/notes" component={Notes} />
+                <Route exact path="/notes/:department" component={Department} />
+                <Route
+                  exact
+                  path="/notes/:department/:semester"
+                  component={Semester}
+                />
+                <Route
+                  exact
+                  path="/notes/:department/:semester/:subject"
+                  component={Subject}
+                />
               </Switch>
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/dashboard/users" component={Users} />
-              <Route
-                exact
-                path="/dashboard/home/image/add"
-                component={AddHomeImage}
-              />
-
-              <Route exact path="/notice/add" component={AddNotice} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/contact" component={Contact} />
-
-              <Route exact path="/test" component={Test} />
             </Router>
           </div>
         </LoadingScreen>

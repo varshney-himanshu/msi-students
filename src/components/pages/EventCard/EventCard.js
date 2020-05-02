@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import Timer from "../Timer";
+import Timer from "../../Timer";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-import { getAllEvents } from "../../actions/dataActions";
-import { extractDateString } from "../../utils/utils";
+import { getAllEvents } from "../../../actions/dataActions";
+import { extractDateString } from "../../../utils/utils";
 import axios from "axios";
-import api from "../../config/keys";
-import roles from "../../config/Roles";
+import api from "../../../config/keys";
+import roles from "../../../config/Roles";
+import Header from "./Header";
+import Body from "./Body";
+import Footer from "./Footer";
 
 class EventCard extends Component {
   constructor(props) {
@@ -16,7 +19,7 @@ class EventCard extends Component {
       event: {},
       loading: true,
       isRegistered: false,
-      deadlineEnded: false,
+      deadlineEnded: true,
       member2: "",
       member3: "",
       member4: "",
@@ -24,6 +27,11 @@ class EventCard extends Component {
       teamName: "",
     };
   }
+
+  de = () => {
+    let now = new Date();
+    return new Date(this.props.event.deadline) - now <= 0;
+  };
 
   static defaultProps = {
     event: {
@@ -53,7 +61,7 @@ class EventCard extends Component {
   }
 
   endDeadline = () => {
-    this.setState({ deadlineEnded: true });
+    this.setState({ deadlineEnded: this.de() });
   };
 
   componentDidMount() {
@@ -85,6 +93,7 @@ class EventCard extends Component {
         }
       }
     }
+    this.setState({ deadlineEnded: this.de() });
   }
 
   onClickRegisterSingle = () => {
@@ -216,17 +225,20 @@ class EventCard extends Component {
   render() {
     let registerButton = <></>;
     const { event } = this.props;
-    const des = event.description.substring(0, 199);
+    const des = event.description.substring(0, 100);
 
     if (event.type === "MULTIPLE") {
       registerButton = (
-        <button onClick={this.toggleTeamForm} className="event-register">
+        <button onClick={this.toggleTeamForm} className="button-secondary">
           Submit Team
         </button>
       );
     } else {
       registerButton = (
-        <button className="event-register" onClick={this.onClickRegisterSingle}>
+        <button
+          className="button-secondary"
+          onClick={this.onClickRegisterSingle}
+        >
           Register
         </button>
       );
@@ -249,7 +261,7 @@ class EventCard extends Component {
               x
             </button>
 
-            <h2 className="heading">
+            <h2 className="heading-secondary">
               Submit Team ({`${event.members} Members`})
             </h2>
             <div>
@@ -278,52 +290,29 @@ class EventCard extends Component {
           </form>
         )}
 
-        <div className="header">
-          <h3>{event.title}</h3>
-          <button
-            onClick={() => this.props.history.push(`/event/${event._id}`)}
-          >
-            View
-          </button>
-        </div>
-        <div className="body">
-          <p className="description">
-            {des}
-            {des.length >= 199 && <>....</>}
-          </p>
-          <div style={{ display: "flex" }}>
-            <p className="venue">
-              <strong>Venue: </strong> {event.venue}
-            </p>
-            <p style={{ marginLeft: "auto" }}>
-              <strong>Date: </strong>
-              {extractDateString(event.date)}
-            </p>
-          </div>
-        </div>
-        <div className="footer">
-          {deadlineEnded ? (
-            <div>Registration Closed!</div>
-          ) : (
-            <>
-              <Timer endDeadline={this.endDeadline} deadline={event.deadline} />
-
-              {auth.user.role === roles.student ||
-              auth.user.role === roles.mod ||
-              auth.isAuthenticated === false ? (
-                <>
-                  {isRegistered ? (
-                    <button className="event-register" disabled>
-                      Registered
-                    </button>
-                  ) : (
-                    registerButton
-                  )}
-                </>
-              ) : null}
-            </>
-          )}
-        </div>
+        <Header
+          deadlineEnded={deadlineEnded}
+          heading={event.title}
+          isRegistered={isRegistered}
+        />
+        <Body
+          description={event.description}
+          venue={event.venue}
+          date={event.date}
+          endDeadline={this.endDeadline}
+          deadline={event.deadline}
+          deadlineEnded={deadlineEnded}
+        />
+        <hr></hr>
+        <Footer
+          deadlineEnded={deadlineEnded}
+          auth={auth}
+          event={event}
+          registerSingle={this.onClickRegisterSingle}
+          isRegistered={isRegistered}
+          toggleMultipleRegister={this.toggleTeamForm}
+          history={this.props.history}
+        ></Footer>
       </div>
     );
   }

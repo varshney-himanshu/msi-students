@@ -1,11 +1,11 @@
 import React from "react";
-import loader from "../../loading.gif";
+import loader from "../../assets/loader-1.gif";
 
 const styles = {
   position: "absolute",
   top: "50%",
   left: "50%",
-  transform: "translate(-50%, -50%)"
+  transform: "translate(-50%, -50%)",
 };
 
 export default function Loader() {
