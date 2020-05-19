@@ -46,7 +46,7 @@ class Department extends Component {
       return (
         <Layout>
           <div className="semesters">
-            <h1 className="heading-primary">Semesters</h1>
+            <h1 className="dashboard__heading">Semesters</h1>
             <hr className="hr" />
             <div className="container">
               <div className="row">

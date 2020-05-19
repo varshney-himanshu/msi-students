@@ -1,0 +1,119 @@
+.event {
+    background-color: $color-primary-0;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 700px;
+    width: 80%;
+    margin: auto;
+    color: white;
+    border-radius: 5px;
+    // margin-bottom: 4rem;
+    padding-bottom: 0.1rem;
+
+
+    &__header {
+        padding: 1rem .5rem;
+        position: relative;
+
+        h1 {
+            margin-bottom: 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+
+        }
+
+        small {
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        &__registered {
+            // position: absolute;
+            width: 100%;
+            background-color: rgb(102, 192, 43);
+            text-align: center;
+
+            margin-bottom: 5px;
+        }
+
+        &__registration-closed {
+            width: 100%;
+            text-align: center;
+            background-color: rgb(190, 46, 46);
+            margin-bottom: 5px;
+        }
+
+
+
+
+    }
+
+    .event-deadline {
+        padding-bottom: 1%;
+    }
+
+    p {
+        padding: 0;
+        margin: 0;
+        padding: 1rem 1rem;
+        letter-spacing: 0.3px;
+        font-weight: 600;
+        line-height: 1.6rem;
+    }
+
+    .timer {
+
+        span {
+            background-color: white;
+            color: $color-primary-0;
+        }
+    }
+
+    &__footer {
+        text-align: center;
+        padding-bottom: 1%;
+    }
+
+}
+
+.event-image img {
+    border: 3px solid white;
+
+    width: 100%;
+}
+
+
+
+
+
+.event-date {
+    padding: 0 3rem;
+    display: block;
+    text-align: left;
+    margin-top: 0.5rem;
+}
+
+
+
+.event .footer {
+    margin-top: 1rem;
+    display: block;
+}
+
+.event .venue {
+    padding: 0 3rem;
+    font-weight: 600;
+}
+
+.event .event-register {
+    margin: 0.5rem;
+    margin-left: auto;
+}
+
+@media only screen and (max-width: 500px) {
+    .event {
+        width: 100%;
+        border-radius: 0;
+    }
+}

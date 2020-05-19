@@ -1,7 +1,7 @@
 let api = "";
 
 if (process.env.NODE_ENV === "production") {
-  api = "";
+  api = "https://backend-eta-eight.now.sh";
 } else {
   api = "http://localhost:5000";
 }

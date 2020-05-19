@@ -47,41 +47,33 @@ class Login extends Component {
   render() {
     return (
       <Layout>
-        <div className="login">
-          <div className="form">
-            <form onSubmit={this.onSubmit}>
-              <img
-                className="login-logo"
-                rel="preload"
-                src={logo}
-                alt="MSI Logo"
-              />
-              <h4 className="heading">MSI Events - Login</h4>
-              <input
-                type="email"
-                name="email"
-                value={this.state.email}
-                placeholder="Email Address"
-                onChange={this.onChange}
-                required
-              />
-              {this.state.errors.email && this.state.errors.email}
-              <br />
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                placeholder="Password"
-                onChange={this.onChange}
-                required
-              />
-              {this.state.errors.password && this.state.errors.password}
-              <br />
-              <button type="submit" value="Login">
-                Login
-              </button>
-            </form>
-          </div>
+        <div className="login ">
+          <form className="form" onSubmit={this.onSubmit}>
+            <h1>Login</h1>
+            <input
+              type="email"
+              name="email"
+              value={this.state.email}
+              placeholder="Email Address"
+              onChange={this.onChange}
+              required
+            />
+            {this.state.errors.email && this.state.errors.email}
+            <br />
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              placeholder="Password"
+              onChange={this.onChange}
+              required
+            />
+            {this.state.errors.password && this.state.errors.password}
+            <br />
+            <button className="button-secondary" type="submit" value="Login">
+              Login
+            </button>
+          </form>
         </div>
       </Layout>
     );

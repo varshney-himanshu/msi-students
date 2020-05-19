@@ -23,23 +23,21 @@ import Navbar from "./components/layout/Navbar";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import Events from "./components/pages/Events";
-import Profile from "./components/pages/Profile";
 import CreateProfile from "./components/pages/CreateProfile";
 import CreateEvent from "./components/pages/CreateEvent";
-import Dashboard from "./components/pages/Dashboard";
-import Test from "./components/Test";
+import Dashboard from "./components/pages/Dashboard/Dashboard";
+
 import Event from "./components/pages/Event";
 import UserRegistered from "./components/pages/UserRegistered";
 import LoadingScreen from "react-loading-screen";
 import isEmpty from "./validation/is-empty";
 import logo from "./logo.png";
-import AddNotice from "./components/pages/AddNotice";
 import EditEvent from "./components/pages/EditEvent";
 import AddHomeImage from "./components/pages/AddHomeImage";
 
 // import "./components/pages/Form.css";
 import EditProfile from "./components/pages/EditProfile";
-import Users from "./components/pages/Users";
+// import Users from "./components/pages/Users";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 
@@ -47,6 +45,7 @@ import Notes from "./components/pages/Notes/Notes";
 import Department from "./components/pages/Notes/Department";
 import Semester from "./components/pages/Notes/Semester";
 import Subject from "./components/pages/Notes/Subject";
+import AddNote from "./components/pages/Notes/AddNote";
 
 window.$ = $;
 
@@ -77,7 +76,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false,
+      loading: true,
     };
   }
 
@@ -96,11 +95,11 @@ class App extends Component {
       <Provider store={store}>
         <LoadingScreen
           loading={loading}
-          bgColor="#226b80"
-          spinnerColor="#9ee5f8"
-          textColor="white"
+          bgColor="#015668"
+          spinnerColor="#f9f6f7"
+          textColor="#f9f6f7"
           logoSrc={logo}
-          text="Hi there. Welcome to MSI Events"
+          text="MSI STUDENTS"
         >
           <div className="App">
             <Router>
@@ -113,10 +112,9 @@ class App extends Component {
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact" component={Contact} />
 
-                <Route exact path="/user/profile" component={Profile} />
                 <Route
                   exact
-                  path="/user/profile/edit"
+                  path="/dashboard/profile/edit"
                   component={EditProfile}
                 />
                 <Route
@@ -134,18 +132,19 @@ class App extends Component {
                   path="/event/:id/registered"
                   component={UserRegistered}
                 />
-
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/dashboard/users" component={Users} />
                 <Route
                   exact
-                  path="/dashboard/home/image/add"
+                  path="/dashboard/homeimages/add"
                   component={AddHomeImage}
                 />
-
-                <Route exact path="/notice/add" component={AddNotice} />
+                <Route
+                  exact
+                  path="/dashboard/:endpoint"
+                  component={Dashboard}
+                />
 
                 <Route exact path="/notes" component={Notes} />
+                <Route exact path="/notes/add" component={AddNote} />
                 <Route exact path="/notes/:department" component={Department} />
                 <Route
                   exact

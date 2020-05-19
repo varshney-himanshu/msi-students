@@ -31,7 +31,7 @@ class Notes extends Component {
     return (
       <Layout>
         <div className="departments">
-          <h1 className="heading-primary">Departments</h1>
+          <h1 className="dashboard__heading">Departments</h1>
           <hr className="hr" />
           <div className="container">
             <div className="row">

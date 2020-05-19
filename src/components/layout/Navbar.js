@@ -56,14 +56,14 @@ class Navbar extends Component {
           {state.auth.user.name}
         </button>
         <div className="dropdown-menu">
-          {state.auth.user.role === roles.admin ||
-          state.auth.user.role === roles.mod ? (
-            <Link className="dropdown-item" to="/dashboard">
-              Dashboard
-            </Link>
-          ) : (
-            <></>
-          )}
+          <Link
+            className="dropdown-item"
+            to={`/dashboard/${
+              state.auth.user.role === roles.admin ? "events" : "profile"
+            }`}
+          >
+            Dashboard
+          </Link>
 
           {state.auth.user.role !== roles.admin ? (
             <Link className="dropdown-item" to="/user/profile">
@@ -74,7 +74,7 @@ class Navbar extends Component {
           )}
 
           <button onClick={this.onClickLogout} className="dropdown-item">
-            Logout
+            LOGOUT
           </button>
         </div>
       </div>

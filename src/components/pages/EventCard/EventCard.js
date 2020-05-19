@@ -248,46 +248,53 @@ class EventCard extends Component {
     return (
       <div className="event-card">
         {event.type === "MULTIPLE" && (
-          <form
-            id={`team-${event._id.toString()}`}
-            className="team-register"
-            onSubmit={this.onClickRegisterMultiple}
-          >
+          <div id={`team-${event._id.toString()}`} className="team-register">
             <button
               type="button"
-              className="btn-close"
+              className="team-register__close"
               onClick={this.CloseMultiForm}
             >
               x
             </button>
+            <form className="form" onSubmit={this.onClickRegisterMultiple}>
+              <h1 className="heading-primary">
+                Submit Team ({`${event.members} Members`})
+              </h1>
+              <hr className="hr ma" />
+              <br />
+              <div>
+                <strong>Leader: </strong>
+                {auth.user.email}
+              </div>
+              {[...Array(event.members - 1)].map((e, i) => (
+                <>
+                  <input
+                    type="email"
+                    name={`member${i + 2}`}
+                    placeholder={`Email of team member ${i + 2}`}
+                    onChange={this.onChange}
+                    required
+                  />
+                  <br />
+                </>
+              ))}
 
-            <h2 className="heading-secondary">
-              Submit Team ({`${event.members} Members`})
-            </h2>
-            <div>
-              <strong>Leader: </strong>
-              {auth.user.email}
-            </div>
-            {[...Array(event.members - 1)].map((e, i) => (
-              <>
-                <input
-                  type="email"
-                  name={`member${i + 2}`}
-                  placeholder={`Email of team member ${i + 2}`}
-                  onChange={this.onChange}
-                  required
-                />
-              </>
-            ))}
-            <input
-              type="text"
-              name="teamName"
-              placeholder="Team Name"
-              onChange={this.onChange}
-              value={this.state.teamName}
-            ></input>
-            <button>Submit</button>
-          </form>
+              <input
+                type="text"
+                name="teamName"
+                placeholder="Team Name"
+                onChange={this.onChange}
+                value={this.state.teamName}
+              ></input>
+              <br />
+              <button className="button-secondary">Submit</button>
+              <br />
+              <small>
+                *Note: Please make sure all the members are registered to the
+                website before you submit.
+              </small>
+            </form>
+          </div>
         )}
 
         <Header

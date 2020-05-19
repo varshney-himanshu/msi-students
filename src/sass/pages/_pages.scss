@@ -1,5 +1,88 @@
 .departments,
 .subjects,
-.semesters {
+.semesters,
+.login,
+.create-event,
+.create-profile,
+.events,
+.homepage,
+.contact,
+.register,
+.users-registered,
+.edit-event,
+.addnote,
+.addhomeimage {
     padding: 20px;
+    padding-top: 85px;
+}
+
+.event-page {
+    padding-top: 95px;
+}
+
+.create-profile {
+    text-align: center;
+
+    p {
+        font-weight: 600;
+    }
+}
+
+
+
+.login,
+.register {
+    .form {
+        background: white;
+        padding: 20px;
+        width: 40%;
+        margin: 0;
+        background-color: rgba(128, 128, 128, 0.205);
+        border-radius: 5px;
+        // box-shadow: 0 0 2px rgba(black, .9);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        h1 {
+            text-transform: uppercase;
+        }
+    }
+}
+
+.users-registered {
+    overflow-x: auto;
+
+    .table {
+        background: white;
+
+        width: 100% !important;
+
+
+        th {
+            width: 80vw;
+        }
+
+        td {
+            width: 80vw;
+        }
+
+        tbody {
+            height: 60%;
+            overflow-y: scroll;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+
+    .login,
+    .register {
+        .form {
+            width: 80%;
+
+        }
+    }
 }

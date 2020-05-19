@@ -53,27 +53,29 @@ class AddHomeImage extends Component {
   render() {
     return (
       <Layout>
-        <div className="form">
-          <form onSubmit={this.onUpload}>
-            <h4 className="heading">Add Home Image</h4>
-            <br />
-            <input
-              type="text"
-              name="id"
-              onChange={this.onChangeInput}
-              placeholder="Event ID"
-            />
-            <br />
-            <input
-              type="text"
-              name="msg"
-              onChange={this.onChangeInput}
-              placeholder="A short message for the event"
-            />
-            <br />
-            <input type="file" name="image" onChange={this.onChangeInput} />
-            <button>Upload</button>
-          </form>
+        <div className="addhomeimage">
+          <h4 className="dashboard__heading">Add Image</h4>
+          <hr className="hr" />
+          <div className="form">
+            <form onSubmit={this.onUpload}>
+              <input
+                type="text"
+                name="id"
+                onChange={this.onChangeInput}
+                placeholder="Event ID"
+              />
+              <br />
+              <input
+                type="text"
+                name="msg"
+                onChange={this.onChangeInput}
+                placeholder="A short message for the event"
+              />
+              <br />
+              <input type="file" name="image" onChange={this.onChangeInput} />
+              <button className="button-secondary">Upload</button>
+            </form>
+          </div>
         </div>
       </Layout>
     );

@@ -237,7 +237,9 @@ class EditProfile extends Component {
                 </option>
               </select>
               <br></br>
-              <button type="submit">Submit</button>
+              <button className="button-secondary" type="submit">
+                Submit
+              </button>
             </form>
           </div>
         </Layout>

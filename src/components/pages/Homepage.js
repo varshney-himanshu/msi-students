@@ -29,6 +29,9 @@ class Homepage extends Component {
   render() {
     const { homeimages, notice, events } = this.state;
     // console.log(homeimages);
+    const eventToDisplay = events.filter(
+      (event) => event.approved.isApproved === true
+    )[0];
     return (
       <Layout>
         <div className="homepage">
@@ -42,7 +45,7 @@ class Homepage extends Component {
               <hr />
               <div className="latest-event">
                 <small>Latest Event</small>
-                <EventCard event={events[0]} />
+                <EventCard event={eventToDisplay} />
               </div>
             </div>
           </div>

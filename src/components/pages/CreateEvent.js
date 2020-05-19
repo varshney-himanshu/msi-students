@@ -88,9 +88,10 @@ class CreateEvent extends Component {
     const { dateNow, type } = this.state;
     return (
       <Layout>
-        <div className="form">
-          <form onSubmit={this.onSubmit}>
-            <h4 className="heading">Add Event</h4>
+        <div className="create-event">
+          <h4 className="dashboard__heading">Add Event</h4>
+          <hr className="hr" />
+          <form className="form" onSubmit={this.onSubmit}>
             <input
               type="text"
               name="title"
@@ -98,12 +99,14 @@ class CreateEvent extends Component {
               value={this.state.title}
               onChange={this.onChange}
             />
+            <br />
             <textarea
               name="description"
               placeholder="Description"
               value={this.state.description}
               onChange={this.onChange}
             />
+            <br />
             <input
               type="text"
               name="venue"
@@ -111,7 +114,9 @@ class CreateEvent extends Component {
               value={this.state.venue}
               onChange={this.onChange}
             />
+            <br />
             <label>Date </label>
+            <br />
             <input
               type="date"
               name="date"
@@ -119,6 +124,7 @@ class CreateEvent extends Component {
               onChange={this.onChange}
               min={dateNow}
             />
+            <br />
             <label>Type Of Event</label>
             <div className="form__radio">
               <input
@@ -128,7 +134,8 @@ class CreateEvent extends Component {
                 value="SINGLE"
                 onChange={this.onChange}
                 required
-              />{" "}
+              />
+
               <span>Single</span>
               <input
                 className="radio"
@@ -137,7 +144,8 @@ class CreateEvent extends Component {
                 value="MULTIPLE"
                 onChange={this.onChange}
                 required
-              />{" "}
+              />
+
               <span>Team</span>
             </div>
             {type === "MULTIPLE" ? (
@@ -171,7 +179,7 @@ class CreateEvent extends Component {
               placeholder="upload image for the event"
               required
             />
-            <button>Submit</button>
+            <button className="button-secondary">Submit</button>
           </form>
         </div>
       </Layout>

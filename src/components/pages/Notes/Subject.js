@@ -6,7 +6,7 @@ import axios from "axios";
 import Layout from "../../layout/Layout";
 import Loader from "../../layout/Loader";
 import Card from "../../Card";
-import PdfCard from "../../PdfCard";
+import NoteCard from "../../NoteCard";
 import FileDownload from "js-file-download";
 
 class Subject extends Component {
@@ -49,23 +49,22 @@ class Subject extends Component {
       return (
         <Layout>
           <div className="departments">
-            <h1 className="heading-primary">{notes[0].subject.subject_name}</h1>
+            <h1 className="dashboard__heading">
+              {notes[0].subject.subject_name}
+            </h1>
             <hr className="hr" />
             <div className="container">
               <div className="row">
                 {notes.map((note) => (
                   <div className="col col-6 col-md-2">
-                    {note.file.file_type.split("/")[1] === "pdf" ? (
-                      <PdfCard
-                        title={note.title}
-                        author={note.user.user_name}
-                        onDownload={() => {
-                          this.downloadFile(note.file.file_url, note.title);
-                        }}
-                      />
-                    ) : (
-                      <></>
-                    )}
+                    <NoteCard
+                      title={note.title}
+                      type={note.file.file_type.split("/")[1]}
+                      author={note.user.user_name}
+                      onDownload={() => {
+                        this.downloadFile(note.file.file_url, note.title);
+                      }}
+                    />
                   </div>
                 ))}
               </div>

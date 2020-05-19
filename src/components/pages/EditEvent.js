@@ -128,57 +128,61 @@ class EditEvent extends Component {
     if (!loading) {
       return (
         <Layout>
-          <div className="form">
-            <form onSubmit={this.onSubmit}>
-              <input
-                type="text"
-                name="title"
-                placeholder="Event Title"
-                value={this.state.title}
-                onChange={this.onChange}
-              />
-              <br />
-              <textarea
-                name="description"
-                placeholder="Description"
-                value={this.state.description}
-                onChange={this.onChange}
-              />
-              <br />
-              <input
-                type="text"
-                name="venue"
-                placeholder="Venue"
-                value={this.state.venue}
-                onChange={this.onChange}
-              />
-              <br />
-              <label>Deadline</label>
-              <input
-                type="date"
-                name="deadline"
-                value={this.state.deadline}
-                onChange={this.onChange}
-              />
-              <br />
-              <label>Date</label>
-              <input
-                type="date"
-                name="date"
-                value={this.state.date}
-                onChange={this.onChange}
-              />
-              <br />
-              <label>Add New Image</label>
-              <input
-                onChange={this.onChange}
-                type="file"
-                name="img"
-                placeholder="upload image for the event"
-              />
-              <br />
-              <button>Submit</button>
-            </form>
+          <div className="edit-event">
+            <h4 className="dashboard__heading">Edit Event</h4>
+            <hr className="hr" />
+            <div className="form">
+              <form onSubmit={this.onSubmit}>
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Event Title"
+                  value={this.state.title}
+                  onChange={this.onChange}
+                />
+                <br />
+                <textarea
+                  name="description"
+                  placeholder="Description"
+                  value={this.state.description}
+                  onChange={this.onChange}
+                />
+                <br />
+                <input
+                  type="text"
+                  name="venue"
+                  placeholder="Venue"
+                  value={this.state.venue}
+                  onChange={this.onChange}
+                />
+                <br />
+                <label>Deadline</label>
+                <input
+                  type="date"
+                  name="deadline"
+                  value={this.state.deadline}
+                  onChange={this.onChange}
+                />
+                <br />
+                <label>Date</label>
+                <input
+                  type="date"
+                  name="date"
+                  value={this.state.date}
+                  onChange={this.onChange}
+                />
+                <br />
+                <label>Add New Image</label>
+                <input
+                  onChange={this.onChange}
+                  type="file"
+                  name="img"
+                  placeholder="upload image for the event"
+                />
+                <br />
+                <button className="button-secondary">Submit</button>
+              </form>
+            </div>
           </div>
         </Layout>
       );

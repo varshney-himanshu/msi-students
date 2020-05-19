@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getAllUsers } from "../../actions/dataActions";
-// import "./UserCard.css";
 import Axios from "axios";
 import api from "../../config/keys";
 import roles from "../../config/Roles";
+import deleteIcon from "../../assets/icons8-delete-bin-24 (1).png";
 
 class UserCard extends Component {
   constructor() {
@@ -97,17 +97,21 @@ class UserCard extends Component {
             <span className="key">Role:</span> {user.role}
           </div>
           <div className="col col-12 col-sm-6 col-md-4 col-lg-2 card_btns">
-            <button className="button-dark" onClick={this.onClickToggle}>
+            <button className="button-quad" onClick={this.onClickToggle}>
               Change Role
             </button>
             <button
               onClick={this.onClickDelete}
+              className="button-delete"
               title="Delete User"
-              className="button-dark-outline"
             >
-              x
+              <img src={deleteIcon} />
             </button>
-            <form id={"form-" + user._id.toString()} onSubmit={this.onSubmit}>
+            <form
+              className="form"
+              id={"form-" + user._id.toString()}
+              onSubmit={this.onSubmit}
+            >
               <button
                 className="form-close"
                 type="button"
@@ -151,14 +155,14 @@ class UserCard extends Component {
                   <button
                     type="button"
                     onClick={this.onClickVerify}
-                    className="button-dark"
+                    className="button-secondary"
                   >
                     Verify
                   </button>
                 </>
               ) : (
                 <>
-                  <button type="submit" className="button-dark">
+                  <button type="submit" className="button-secondary">
                     Submit
                   </button>
                 </>

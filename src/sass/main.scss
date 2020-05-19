@@ -16,6 +16,11 @@
 //pages
 @import "./pages/events";
 @import "./pages/pages";
+@import "./pages/event";
+@import "./pages/about";
+@import "./pages/dashboard";
+@import "./pages/users";
+@import "./pages/contact";
 
 //components
 @import "./components/hamburger";
@@ -28,3 +33,7 @@
 @import "./components/scrollbar";
 @import "./components/card";
 @import "./components/pdf-card";
+@import "./components/form";
+@import "./components/team-register";
+@import "./components/usercard";
+@import "./components/profile";

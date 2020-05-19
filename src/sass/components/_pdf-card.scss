@@ -1,10 +1,10 @@
-.pdf-card {
+.note-card {
     perspective: 1200px;
     -moz-perspective: 1500;
     position: relative;
     width: 150px;
     height: 100px;
-
+    margin-bottom: 10px;
 
     &__side {
         padding: 5px;
@@ -20,20 +20,24 @@
         backface-visibility: hidden;
 
         &--front {
-            background-color: #B31D23;
+
+            // background-color: #B31D23;
+            background-color: gray;
 
             h1 {
                 margin: 0;
                 padding: 0;
                 font-size: 1.6rem;
-                border-bottom: 1px solid darken(#B31D23, 5%);
+                border-bottom: 1px solid darken(gray, 10%);
+                text-transform: uppercase;
             }
 
 
         }
 
         &--back {
-            background-color: #B31D23;
+            // background-color: #B31D23;
+            background-color: gray;
             transform: rotateY(180deg);
 
             &__button {
@@ -43,7 +47,7 @@
                 top: 50%;
                 transform: translate(-50%, -50%);
                 border: none;
-                background: #B31D23;
+                background: gray;
                 color: white;
                 padding: 10px 10px;
                 font-weight: bold;
@@ -54,7 +58,7 @@
 
                 &:hover {
                     cursor: pointer;
-                    background: darken(#B31D23, 10%);
+                    background: darken(gray, 10%);
                 }
 
                 &:focus,
@@ -90,4 +94,66 @@
         bottom: 4px;
     }
 
+    &--pdf {
+        .note-card__side {
+            &--front {
+                background-color: #B31D23;
+
+                h1 {
+                    border-bottom: 1px solid darken(#B31D23, 10%);
+                }
+
+            }
+
+            &--back {
+                background-color: #B31D23;
+
+                &__button {
+                    background-color: #B31D23;
+
+                    &:hover {
+                        background: darken(#B31D23, 10%);
+                    }
+                }
+            }
+        }
+    }
+
+    &--doc {
+        .note-card__side {
+            &--front {
+                background-color: #274E9D;
+
+                h1 {
+                    border-bottom: 1px solid darken(#274E9D, 10%);
+                }
+
+            }
+
+            &--back {
+                background-color: #274E9D;
+
+                &__button {
+                    background-color: #274E9D;
+
+                    &:hover {
+                        background: darken(#274E9D, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .note-card {
+        width: 120px;
+        height: 80px;
+        font-size: 85%;
+
+        &__side {
+            width: 120px;
+            height: 80px;
+        }
+    }
 }

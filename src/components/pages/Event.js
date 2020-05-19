@@ -36,6 +36,11 @@ class Event extends Component {
     }
   }
 
+  de = () => {
+    let now = new Date();
+    return new Date(this.state.event.deadline) - now <= 0;
+  };
+
   componentDidMount() {
     const id = this.props.match.params.id;
     const auth = this.props.auth;
@@ -45,6 +50,7 @@ class Event extends Component {
       .then((res) => {
         if (res.data) {
           this.setState({ event: res.data, loading: false }, () => {
+            this.setState({ deadlineEnded: this.de() });
             if (auth.isAuthenticated) {
               if (res.data.type === "MULTIPLE") {
                 const { usersRegistered } = this.state.event;
@@ -209,9 +215,8 @@ class Event extends Component {
       this.props.history.push("/user/profile");
     }
   };
-
   endDeadline = () => {
-    this.setState({ deadlineEnded: true });
+    this.setState({ deadlineEnded: this.de() });
   };
 
   render() {
@@ -221,13 +226,16 @@ class Event extends Component {
 
     if (event.type === "MULTIPLE") {
       registerButton = (
-        <button onClick={this.toggleTeamForm} className="event-register">
+        <button onClick={this.toggleTeamForm} className="button-secondary">
           Submit Team
         </button>
       );
     } else {
       registerButton = (
-        <button className="event-register" onClick={this.onClickRegisterSingle}>
+        <button
+          className="button-secondary"
+          onClick={this.onClickRegisterSingle}
+        >
           Register
         </button>
       );
@@ -238,115 +246,127 @@ class Event extends Component {
     } else {
       return (
         <Layout>
-          <div className="container">
+          <div className="">
             {event.type === "MULTIPLE" && (
-              <form
+              <div
                 id={`team-${event._id.toString()}`}
                 className="team-register"
-                onSubmit={this.onClickRegisterMultiple}
               >
                 <button
                   type="button"
-                  className="btn-close"
+                  className="team-register__close"
                   onClick={this.CloseMultiForm}
                 >
                   x
                 </button>
+                <form className="form" onSubmit={this.onClickRegisterMultiple}>
+                  <h1 className="heading-primary">
+                    Submit Team ({`${event.members} Members`})
+                  </h1>
 
-                <h2 className="heading">
-                  Submit Team ({`${event.members} Members`})
-                </h2>
-                <div>
-                  <strong>Leader: </strong>
-                  {auth.user.email}
-                </div>
-                {[...Array(event.members - 1)].map((e, i) => (
-                  <>
-                    <input
-                      type="email"
-                      name={`member${i + 2}`}
-                      placeholder={`Email of team member ${i + 2}`}
-                      onChange={this.onChange}
-                      required
-                    />
-                  </>
-                ))}
-                <input
-                  type="text"
-                  name="teamName"
-                  placeholder="Team Name"
-                  onChange={this.onChange}
-                  value={this.state.teamName}
-                ></input>
-                <button>Submit</button>
-              </form>
+                  <br />
+                  <hr className="hr ma" />
+                  <br />
+                  <div>
+                    <strong>Leader: </strong>
+                    {auth.user.email}
+                  </div>
+                  {[...Array(event.members - 1)].map((e, i) => (
+                    <>
+                      <input
+                        type="email"
+                        name={`member${i + 2}`}
+                        placeholder={`Email of team member ${i + 2}`}
+                        onChange={this.onChange}
+                        required
+                      />
+                      <br />
+                    </>
+                  ))}
+
+                  <input
+                    type="text"
+                    name="teamName"
+                    placeholder="Team Name"
+                    onChange={this.onChange}
+                    value={this.state.teamName}
+                  ></input>
+                  <br />
+                  <button className="button-secondary">Submit</button>
+                  <br />
+                  <small>
+                    *Note: Please make sure all the members are registered to
+                    the website before you submit.
+                  </small>
+                </form>
+              </div>
             )}
+            <div className="event-page">
+              <div className="event">
+                <div className="event__header">
+                  <h1>{event.title}</h1>
+                  <small>
+                    {event.type === "MULTIPLE" ? "Team Event" : "Single Event"}
+                  </small>
+                  {isRegistered && (
+                    <div className="event__header__registered">
+                      <small>registered</small>
+                    </div>
+                  )}
 
-            <div className="event">
-              <h1>{event.title}</h1>
-              <h5>
-                {event.type === "MULTIPLE" ? "Team Event" : "Single Event"}
-              </h5>
-              <div className="event-image">
-                <img src={event.image.image_url} />
-              </div>
-              <p className="event-date">
-                <strong>Date: </strong> {extractDateString(event.date)}
-              </p>
-              <p>{event.description}</p>
-
-              <div className="event-deadline">
-                <strong>Registration Deadline:</strong>
-                <span className="deadline">
-                  {extractDateString(event.deadline)}
-                </span>
-                <Timer
-                  deadline={event.deadline}
-                  endDeadline={this.endDeadline}
-                />
-              </div>
-
-              <div className="footer">
-                <div className="venue">
-                  <strong>Venue:</strong> {event.venue}
+                  {deadlineEnded && (
+                    <div className="event__header__registration-closed">
+                      <small>registration closed</small>
+                    </div>
+                  )}
+                  <div className="event-image">
+                    <img src={event.image.image_url} />
+                  </div>
                 </div>
+                <p className="event-date">
+                  <strong>Date: </strong> {extractDateString(event.date)}
+                  <br />
+                  <strong>Venue:</strong> {event.venue}
+                </p>
+                <p>{event.description}</p>
 
-                {deadlineEnded ? (
-                  <div>Registration Closed!</div>
-                ) : (
-                  <>
-                    {auth.user.role === roles.student ||
-                    auth.user.role === roles.mod ||
-                    auth.isAuthenticated === false ? (
-                      <>
-                        {isRegistered ? (
-                          <button className="event-register" disabled>
-                            Registered
-                          </button>
-                        ) : (
-                          registerButton
-                        )}
-                      </>
-                    ) : null}
-                  </>
+                {!deadlineEnded && (
+                  <div className="event-deadline">
+                    <Timer
+                      deadline={event.deadline}
+                      endDeadline={this.endDeadline}
+                    />
+                  </div>
                 )}
+                <div className="event__footer">
+                  {deadlineEnded ? null : (
+                    <>
+                      {auth.user.role === roles.student ||
+                      auth.user.role === roles.mod ||
+                      auth.isAuthenticated === false
+                        ? registerButton
+                        : null}
+                    </>
+                  )}
 
-                {auth.isAuthenticated &&
-                (auth.user.role === roles.admin ||
-                  auth.user.role === roles.mod) ? (
-                  <button
-                    className="event-register"
-                    onClick={() =>
-                      this.props.history.push(
-                        `/event/${this.props.match.params.id}/registered`
-                      )
-                    }
-                  >
-                    Users Registered
-                  </button>
-                ) : (
-                  <></>
-                )}
+                  {auth.isAuthenticated &&
+                  (auth.user.id === event.creator.creator_id ||
+                    auth.user.role === roles.admin ||
+                    auth.user.role === roles.mod) ? (
+                    <button
+                      className="button-secondary"
+                      onClick={() =>
+                        this.props.history.push(
+                          `/event/${this.props.match.params.id}/registered`
+                        )
+                      }
+                    >
+                      Users Registered
+                    </button>
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
             </div>
           </div>

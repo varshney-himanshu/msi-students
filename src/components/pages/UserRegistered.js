@@ -64,24 +64,30 @@ class UserRegistered extends Component {
       if (event.type === "MULTIPLE") {
         return (
           <Layout>
-            <div className="user-registered">
-              <div className="container">
-                <table>
+            <div className="users-registered">
+              <h4 className="dashboard__heading">user registered</h4>
+              <hr className="hr" />
+              <table className="table users-registered__table">
+                <thead class="thead-dark">
                   <tr>
-                    <th>Team Name</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Team Name</th>
                     {[...Array(event.members)].map((e, i) => (
                       <>
-                        <th>{`Member ${i + 1} Name`}</th>
-                        <th>{`Member ${i + 1} Email`}</th>
-                        <th>{`Member ${i + 1} Phone`}</th>
-                        <th>{`Member ${i + 1} E.ID`}</th>
-                        <th>{`Member ${i + 1} Course`}</th>
-                        <th>{`Member ${i + 1} Institute`}</th>
+                        <th scope="col">{`Member ${i + 1} Name`}</th>
+                        <th scope="col">{`Member ${i + 1} Email`}</th>
+                        <th scope="col">{`Member ${i + 1} Phone`}</th>
+                        <th scope="col">{`Member ${i + 1} E.ID`}</th>
+                        <th scope="col">{`Member ${i + 1} Course`}</th>
+                        <th scope="col">{`Member ${i + 1} Institute`}</th>
                       </>
                     ))}
                   </tr>
+                </thead>
+                <tbody>
                   {usersRegistered.map((team, i) => (
                     <tr>
+                      <td scope="row">{i + 1}</td>
                       <td>{team[`teamName`]}</td>
                       {[...Array(event.members)].map((e, i) => (
                         <>
@@ -95,9 +101,10 @@ class UserRegistered extends Component {
                       ))}
                     </tr>
                   ))}
-                </table>
-              </div>
-              <button className="export-as-csv" onClick={this.onClickDownload}>
+                </tbody>
+              </table>
+
+              <button className="button-quad" onClick={this.onClickDownload}>
                 Export as .csv
               </button>
             </div>
@@ -106,30 +113,38 @@ class UserRegistered extends Component {
       } else {
         return (
           <Layout>
-            <div className="user-registered">
-              <div className="container">
-                <table>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Enrollment No.</th>
-                    <th>Institute</th>
-                    <th>Course</th>
-                    <th>Phone</th>
-                  </tr>
-                  {usersRegistered.map((profile) => (
+            <div className="users-registered">
+              <div>
+                <h4 className="dashboard__heading">user registered</h4>
+                <hr className="hr" />
+                <table className="table users-registered__table">
+                  <thead className="thead-dark">
                     <tr>
-                      <td>{profile.fullName}</td>
-                      <td>{profile.email}</td>
-                      <td>{profile.enrollment_id}</td>
-                      <td>{profile.institute}</td>
-                      <td>{profile.course}</td>
-                      <td>{profile.phone}</td>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Enrollment No.</th>
+                      <th scope="col">Institute</th>
+                      <th scope="col">Course</th>
+                      <th scope="col">Phone</th>
                     </tr>
-                  ))}
+                  </thead>
+                  <tbody>
+                    {usersRegistered.map((profile, i) => (
+                      <tr>
+                        <td scope="row">{i + 1}</td>
+                        <td>{profile.fullName}</td>
+                        <td>{profile.email}</td>
+                        <td>{profile.enrollment_id}</td>
+                        <td>{profile.institute}</td>
+                        <td>{profile.course}</td>
+                        <td>{profile.phone}</td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
               </div>
-              <button className="export-as-csv" onClick={this.onClickDownload}>
+              <button className="button-quad" onClick={this.onClickDownload}>
                 Export as .csv
               </button>
             </div>

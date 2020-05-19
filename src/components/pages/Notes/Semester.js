@@ -46,7 +46,7 @@ class Semester extends Component {
       return (
         <Layout>
           <div className="departments">
-            <h1 className="heading-primary">Subjects</h1>
+            <h1 className="dashboard__heading">Subjects</h1>
             <hr className="hr" />
             <div className="container">
               <div className="row">

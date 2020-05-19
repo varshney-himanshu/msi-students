@@ -100,8 +100,9 @@ class CreateProfile extends Component {
     const { departments } = this.state;
     return (
       <Layout>
-        <div className="form">
-          <form onSubmit={this.onSubmit}>
+        <div className="create-profile">
+          <form className="form" onSubmit={this.onSubmit}>
+            <h3>Create Profile</h3>
             <input
               type="text"
               name="name"
@@ -183,7 +184,9 @@ class CreateProfile extends Component {
               </option>
             </select>
             <br></br>
-            <button type="submit">Submit</button>
+            <button className="button-secondary" type="submit">
+              Submit
+            </button>
           </form>
         </div>
       </Layout>

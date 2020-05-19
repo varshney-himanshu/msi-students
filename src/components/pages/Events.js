@@ -25,13 +25,16 @@ class Events extends Component {
 
   render() {
     const { events } = this.state;
+    const approvedEvents = events.filter(
+      (event) => event.approved.isApproved === true
+    );
     return (
       <Layout>
         <div className="events">
-          <h1 className="heading-primary">Events</h1>
+          <h1 className="dashboard__heading">Events</h1>
           <hr className="hr" />
           <div className="row">
-            {events.map((event, index) => (
+            {approvedEvents.map((event, index) => (
               <div className="col col-12 col-md-3">
                 <EventCard key={index + event._id} event={event} />
               </div>

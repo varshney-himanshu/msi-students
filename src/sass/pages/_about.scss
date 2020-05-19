@@ -1,0 +1,96 @@
+.about {
+    padding-top: 65px;
+    background-color: $color-primary-0;
+
+    &__info {
+        padding: 2% 2%;
+        background-color: $color-primary-1;
+    }
+
+    &__logo {
+        width: 9rem;
+        float: left;
+        margin: 5px 15px;
+        border: 5px solid $color-primary-0;
+        background-color: $color-primary-0;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    &__info-paragraph {
+        line-height: 100%;
+        padding: 0 10px;
+    }
+
+    &__team {
+        color: white;
+        padding-top: 1rem;
+        box-shadow: inset 0 0 20px rgba(black, .3);
+
+        .row {
+            margin: auto;
+        }
+
+        .heading-primary {
+            margin-bottom: 34px;
+            /* border-bottom: 1px solid darkslategray; */
+        }
+
+        .team-card {
+            margin: auto;
+            // padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            transition: all 0.2s;
+            text-align: center;
+
+            a {
+                color: white;
+
+                &:hover {
+                    color: rgb(79, 188, 196);
+                }
+            }
+
+            &__pic {
+                width: 110px;
+                border: 2px solid $color-primary-1;
+                box-shadow: 0 0 20px rgba(black, .3);
+                border-radius: 10000px;
+                text-align: center;
+            }
+
+            &__name {
+                padding: 0;
+                margin: 0;
+                letter-spacing: 1px;
+                margin-top: 1rem;
+                font-size: 1.3rem;
+                font-weight: 700;
+                /* border-bottom: 1px solid darkgray; */
+                color: white;
+
+
+            }
+        }
+    }
+
+
+
+
+}
+
+
+
+
+
+.team-card hr {
+    border: 0.4px solid lightgray;
+}
+
+
+
+
+.repo-link {
+    padding: 0 1rem;
+    font-weight: 600;
+}
