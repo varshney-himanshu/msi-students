@@ -61,7 +61,7 @@ export const loginUser = (userData, history) => (dispatch) => {
         payload: {},
       });
       if (!decoded.isProfileCreated) {
-        history.push("/user/profile");
+        history.push("/dashboard/profile");
       } else {
         history.push("/");
       }

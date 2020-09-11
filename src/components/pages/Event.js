@@ -128,7 +128,7 @@ class Event extends Component {
         });
       } else {
         alert("Please create your profile to register on an event.");
-        this.props.history.push("/user/profile");
+        this.props.history.push("/dashboard/profile");
       }
     } else {
       this.props.history.push("/login");
@@ -212,7 +212,7 @@ class Event extends Component {
         });
     } else {
       alert("Please create your profile to register on an event.");
-      this.props.history.push("/user/profile");
+      this.props.history.push("/dashboard/profile");
     }
   };
   endDeadline = () => {

@@ -16,30 +16,27 @@ export default function About() {
           <hr className="hr" />
           <img className="about__logo" src={logo} alt="" />
           <p className="about__info-paragraph">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-            porro, dolore ea eaque cumque perspiciatis. Sapiente aliquid hic,
-            voluptates neque debitis veniam incidunt esse quae pariatur ipsa
-            temporibus ullam sunt! Lorem ipsum, dolor sit amet consectetur
-            adipisicing elit. Et dolore asperiores vitae modi ducimus. Neque
-            quod maxime aliquam laborum, obcaecati alias inventore explicabo
-            adipisci nobis porro quisquam perferendis ducimus ipsum Lorem, ipsum
-            dolor sit amet consectetur adipisicing elit. Minus aspernatur nisi
-            est repellendus culpa, libero iusto, eius iure expedita, eum tenetur
-            possimus. Quis, debitis iure repellat eveniet laboriosam alias
-            praesentium.
+            MSI Students is a web-based application that provides an interface
+            to the students of the college to perform and access the resources
+            of two main aspects of college life. The extracurricular and
+            academics are covered very well under this web-based application.
+            MSI Students is an integrated application, Event Management, and
+            Notes sharing application that is integrated into a single platform
+            to provide the students to manage their events organizing and
+            registration along with the notes and academics at a single place.
           </p>
           <strong className="heading">
             This project is open source, you can contribute to our repositories.
           </strong>
           <div>
             <a
-              href="https://www.github.com/varshney-himanshu/msi-event-manager"
+              href="https://github.com/varshney-himanshu/msi-students"
               className="repo-link"
             >
               Frontend
             </a>
             <a
-              href="https://www.github.com/varshney-himanshu/api-msi-event-manager"
+              href="https://github.com/varshney-himanshu/api-msi-students"
               className="repo-link"
             >
               Backend API

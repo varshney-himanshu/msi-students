@@ -1,9 +1,9 @@
 let api = "";
 
 if (process.env.NODE_ENV === "production") {
-  api = "https://backend-eta-eight.now.sh";
+  api = "https://backend.varshney-himanshu.vercel.app";
 } else {
-  api = "http://localhost:5000";
+  api = "https://backend.varshney-himanshu.vercel.app";
 }
 
 export default api;

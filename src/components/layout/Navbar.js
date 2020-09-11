@@ -66,7 +66,7 @@ class Navbar extends Component {
           </Link>
 
           {state.auth.user.role !== roles.admin ? (
-            <Link className="dropdown-item" to="/user/profile">
+            <Link className="dropdown-item" to="/dashboard/profile">
               Profile
             </Link>
           ) : (
